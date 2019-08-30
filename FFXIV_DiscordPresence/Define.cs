@@ -15,6 +15,7 @@ namespace FFXIV_DiscordPresence
             AddCombatant = 3,
             PartyList = 11,
             PlayerStats = 12,
+            Version = 253,
         }
 
         public enum ClassJob : byte

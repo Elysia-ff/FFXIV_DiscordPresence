@@ -9,6 +9,8 @@ namespace FFXIV_DiscordPresence
 {
     public class PresenceData
     {
+        public string pluginVersion;
+
         public uint PlayerCode;
         public string PlayerName = string.Empty;
         public string ServerName = string.Empty;
