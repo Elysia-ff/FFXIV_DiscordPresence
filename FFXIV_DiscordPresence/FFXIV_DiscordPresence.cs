@@ -116,8 +116,12 @@ namespace FFXIV_DiscordPresence
                 {
                     case Define.LogType.ChangeZone:
                     {
-                        presenceData.ZoneName = log[3];
-                        Discord.Instance.UpdatePresence(presenceData.GetPresence());
+                        string zoneName = log[3];
+                        if (!presenceData.ZoneName.Equals(zoneName))
+                        {
+                            presenceData.ZoneName = log[3];
+                            Discord.Instance.UpdatePresence(presenceData.GetPresence());
+                        }
 
                         break;
                     }
