@@ -46,7 +46,7 @@ namespace FFXIV_DiscordPresence
                 IActPluginV1 o = null;
                 foreach (var x in ActGlobals.oFormActMain.ActPlugins)
                 {
-                    if (x.pluginFile.Name.ToUpper() == "FFXIV_ACT_Plugin.dll".ToUpper() && x.cbEnabled.Checked)
+                    if (x.pluginFile.Name.ToUpper().Contains("FFXIV_ACT_Plugin".ToUpper()) && x.cbEnabled.Checked)
                     {
                         o = x.pluginObj;
                         if (o != null)
