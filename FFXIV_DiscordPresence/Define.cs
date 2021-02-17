@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace FFXIV_DiscordPresence
 {
@@ -15,7 +11,6 @@ namespace FFXIV_DiscordPresence
             AddCombatant = 3,
             PartyList = 11,
             PlayerStats = 12,
-            Version = 253,
         }
 
         public enum ClassJob : byte

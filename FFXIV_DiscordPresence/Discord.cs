@@ -22,7 +22,6 @@ namespace FFXIV_DiscordPresence
         }
 
         private DiscordRpcClient client;
-        //private System.Timers.Timer timer;
 
         public Discord()
         {
@@ -31,8 +30,6 @@ namespace FFXIV_DiscordPresence
 
         public void Dispose()
         {
-            //timer.Stop();
-            //timer.Dispose();
             client.Dispose();
 
             instance = null;
@@ -65,14 +62,6 @@ namespace FFXIV_DiscordPresence
 #endif
 
             client.Initialize();
-
-            //timer = new System.Timers.Timer(150);
-            //timer.Elapsed += (sender, e) =>
-            //{
-            //    client.Invoke();
-            //    // UpdatePresence();
-            //};
-            //timer.Start();
         }
 
         public void UpdatePresence(RichPresence richPresence)

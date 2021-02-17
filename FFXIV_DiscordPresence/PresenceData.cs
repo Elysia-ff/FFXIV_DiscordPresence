@@ -1,16 +1,10 @@
 ﻿using DiscordRPC;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FFXIV_DiscordPresence
 {
     public class PresenceData
     {
-        public string pluginVersion;
-
         public uint PlayerCode;
         public string PlayerName = string.Empty;
         public string ServerName = string.Empty;
@@ -26,8 +20,8 @@ namespace FFXIV_DiscordPresence
         private string zoneName = string.Empty;
         private ulong unixStart;
 
-        public static ulong StartUnixSeconds = (ulong)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-        public const string LargeImageKey = "yshtola_";
+        public static readonly ulong StartUnixSeconds = (ulong)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        public static readonly string LargeImageKey = "yshtola_";
         public readonly int PartyMax = 8;
 
         private readonly string nameFormat = "{0} @ {1}";
@@ -80,7 +74,7 @@ namespace FFXIV_DiscordPresence
             return richPresence;
         }
 
-        public static RichPresence Default = new RichPresence()
+        public static readonly RichPresence Default = new RichPresence()
         {
             Timestamps = new Timestamps()
             {

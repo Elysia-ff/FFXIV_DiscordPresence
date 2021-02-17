@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Windows.Forms;
 using Advanced_Combat_Tracker;
 
@@ -26,74 +25,6 @@ namespace FFXIV_DiscordPresence
             ActGlobals.oFormActMain.BeforeLogLineRead += OnBeforeLogRead;
 
             Discord.Instance.UpdatePresence(PresenceData.Default);
-
-            System.Timers.Timer timer = new System.Timers.Timer(6000);
-            timer.Elapsed += delegate
-            {
-                timer.Close();
-                Initailize();
-            };
-            timer.Start();
-        }
-
-        private void Initailize()
-        {
-            if (presenceData.PlayerCode > 0)
-                return;
-
-            Invoke(() =>
-            {
-                IActPluginV1 o = null;
-                foreach (var x in ActGlobals.oFormActMain.ActPlugins)
-                {
-                    if (x.pluginFile.Name.ToUpper().Contains("FFXIV_ACT_Plugin".ToUpper()) && x.cbEnabled.Checked)
-                    {
-                        o = x.pluginObj;
-                        if (o != null)
-                        {
-                            try
-                            {
-                                var pluginType = o.GetType();
-
-                                o.DeInitPlugin();
-                                x.pluginObj = o = null;
-                                System.Threading.Thread.Sleep(500);
-                                x.tpPluginSpace.Controls.Clear();
-                                System.Threading.Thread.Sleep(500);
-
-                                IActPluginV1 main = (IActPluginV1)Activator.CreateInstance(pluginType);
-
-                                main.InitPlugin(x.tpPluginSpace, x.lblPluginStatus);
-                                x.pluginObj = o = main;
-                            }
-                            catch (Exception)
-                            {
-
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        public static void Invoke(Action action)
-        {
-            if (ActGlobals.oFormActMain != null &&
-                ActGlobals.oFormActMain.IsHandleCreated &&
-                !ActGlobals.oFormActMain.IsDisposed)
-            {
-                if (ActGlobals.oFormActMain.InvokeRequired)
-                {
-                    ActGlobals.oFormActMain.Invoke((MethodInvoker)delegate
-                    {
-                        action();
-                    });
-                }
-                else
-                {
-                    action();
-                }
-            }
         }
 
         public void DeInitPlugin()
@@ -106,7 +37,7 @@ namespace FFXIV_DiscordPresence
 
         private void OnBeforeLogRead(bool isImport, LogLineEventArgs logInfo)
         {
-            string[] log = logInfo.logLine.Split('|');
+            string[] log = logInfo.originalLogLine.Split('|');
             if (log.Length < 0)
                 return;
 
