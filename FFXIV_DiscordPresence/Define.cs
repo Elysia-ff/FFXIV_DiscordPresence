@@ -53,7 +53,9 @@ namespace FFXIV_DiscordPresence
             RedMage = 35,
             BlueMage = 36,
             Gunbreaker = 37,
-            Dancer = 38
+            Dancer = 38,
+            Reaper = 39,
+            Sage = 40,
         }
 
         public static Dictionary<ClassJob, string> Assets = new Dictionary<ClassJob, string>()
@@ -95,7 +97,9 @@ namespace FFXIV_DiscordPresence
             { ClassJob.RedMage, "RDM" },
             { ClassJob.BlueMage, "BLU" },
             { ClassJob.Gunbreaker, "GNB" },
-            { ClassJob.Dancer, "DNC" }
+            { ClassJob.Dancer, "DNC" },
+            { ClassJob.Reaper, "RPR" },
+            { ClassJob.Sage, "SGE" }
         };
     }
 }
