@@ -70,10 +70,7 @@ namespace FFXIV_DiscordPresence
                         if (playerCode == presenceData.PlayerCode)
                         {
                             presenceData.PlayerLevel = uint.Parse(log[5], NumberStyles.HexNumber);
-                            if (int.TryParse(log[8], out int r))
-                                presenceData.ServerName = log[10];
-                            else
-                                presenceData.ServerName = log[8];
+                            presenceData.ServerName = log[8];
                            
                             Discord.Instance.UpdatePresence(presenceData.GetPresence());
                         }

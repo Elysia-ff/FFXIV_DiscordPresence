@@ -52,14 +52,14 @@ namespace FFXIV_DiscordPresence
 
             if (Define.Assets.ContainsKey(ClassJob))
             {
-                richPresence.Assets.SmallImageKey = Define.Assets[ClassJob].ToLower();
+                richPresence.Assets.SmallImageKey = Define.Assets[ClassJob];
                 if (PlayerLevel > 0)
                 {
-                    richPresence.Assets.SmallImageText = string.Format(jobFormat, ClassJob.ToString(), PlayerLevel);
+                    richPresence.Assets.SmallImageText = string.Format(jobFormat, Define.DISPLAY_NAMES[ClassJob], PlayerLevel);
                 }
                 else
                 {
-                    richPresence.Assets.SmallImageText = ClassJob.ToString();
+                    richPresence.Assets.SmallImageText = Define.DISPLAY_NAMES[ClassJob];
                 }
             }
 
